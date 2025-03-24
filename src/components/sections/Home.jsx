@@ -11,8 +11,11 @@ export const Home = () => {
                 
                 </p>
                 <div className="flex justify-center space-x-4">
+                    <a href="#about" className="bg-blue-500 text-white py-3 px-6 rounded font-medium transition relative overflow-hidden hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(60,130,250, 0.5)]">
+                        About Me
+                    </a>
                     <a href="#hobbies" className="bg-blue-500 text-white py-3 px-6 rounded font-medium transition relative overflow-hidden hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(60,130,250, 0.5)]">
-                        View Hobbies
+                        My Hobbies
                     </a>
                 </div>
             </div>

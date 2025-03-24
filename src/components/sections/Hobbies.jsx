@@ -14,18 +14,18 @@ export const Hobbies = () => {
           "Uncut Gems",
           "Fargo",
           "The Piano Teacher",
-          "The Godfather",
+          "The Godfather(1972)",
           "12 Monkeys",
           "Adaptation.",
           "Good Time",
-          "Aftersun",
+          "Aftersun (2022)",
           "Lost in Translation",
           "Akira",
           "Dazed and Confused",
           "Taxi Driver(1976)",
           "Synedoche, New York",
           "Pulp Fiction",
-          "The Godfather Part II",
+          "The Godfather Part II(1974)",
           "Blue Velvet",
           "Apocalypse Now",
           "Eternal Sunshine of the Spotless Mind",
@@ -58,6 +58,9 @@ export const Hobbies = () => {
                 </h2>
 
                 <div className="rounded-xl p-8 border-white/10 border hover:-translate-y-1 transition-all">
+                  <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
+                      Movies
+                  </h2>
                     <p className="text-gray-300 mb-6">
                     Movies have always been a passion of mine, offering a unique window into different cultures, stories, and emotions. 
                     Whether it's the thrill of a gripping action scene, the depth of a well-crafted drama, or the artistry of cinematography, I love exploring films from all genres. 
