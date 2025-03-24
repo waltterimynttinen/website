@@ -1,9 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 import {createMovieList} from "../../utils/tmdbApi";
+import { fetchAlbumData } from "../../utils/lastfmApi";
 
 export const Hobbies = () => {
       const [movies, setMovies] = useState([]);
-      const carouselRef = useRef(null);
+      const [albums, setAlbums] = useState([]);
+      const movieCarouselRef = useRef(null);
+      const albumCarouselRef = useRef(null);
     
       useEffect(() => {
         const movieNames = [
@@ -31,22 +34,54 @@ export const Hobbies = () => {
           "Eternal Sunshine of the Spotless Mind",
           "Reservoir Dogs"
         ];
+
+        const albumsWithArtists = [
+          { albumName: 'Since I Left You', artistName: 'The Avalanches' },
+          { albumName: 'The Dark Side of the Moon', artistName: 'Pink Floyd' },
+          { albumName: 'In Rainbows', artistName: 'Radiohead' },
+          { albumName: 'Depression Cherry', artistName: 'Beach House' },
+          { albumName: 'Wish You Were Here', artistName: 'Pink Floyd' },
+          { albumName: 'Atomizer', artistName: 'Big Black' },
+          { albumName: 'Rumours', artistName: 'Fleetwood Mac' },
+          { albumName: 'The Velvet Underground', artistName: 'The Velvet Underground' },
+          { albumName: 'Titanic Rising', artistName: 'Weyes Blood' },
+          { albumName: 'Let It Be', artistName: 'The Replacements' }
+        ];
     
         // Fetch movie list based on names
         createMovieList(movieNames).then((fetchedMovies) => {
           setMovies(fetchedMovies);
         });
+
+        const loadAlbums = async () => {
+          const albumData = await fetchAlbumData(albumsWithArtists);
+          setAlbums(albumData);
+        };
+        loadAlbums();
+
       }, []);
     
-      const scrollLeft = () => {
-        if (carouselRef.current) {
-          carouselRef.current.scrollBy({ left: -300, behavior: "smooth" });
+      const scrollLeftMovie = () => {
+        if (movieCarouselRef.current) {
+          movieCarouselRef.current.scrollBy({ left: -300, behavior: "smooth" });
         }
       };
     
-      const scrollRight = () => {
-        if (carouselRef.current) {
-          carouselRef.current.scrollBy({ left: 300, behavior: "smooth" });
+      const scrollRightMovie = () => {
+        if (movieCarouselRef.current) {
+          movieCarouselRef.current.scrollBy({ left: 300, behavior: "smooth" });
+        }
+      };
+
+      const scrollLeftAlbum = () => {
+        if (albumCarouselRef.current) {
+          albumCarouselRef.current.scrollBy({ left: -300, behavior: "smooth" });
+        }
+      };
+    
+      const scrollRightAlbum = () => {
+        if (albumCarouselRef.current) {
+          albumCarouselRef.current.scrollBy({ left: 300, behavior: "smooth" });
         }
       };
 
@@ -68,19 +103,19 @@ export const Hobbies = () => {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 "></div>
+                
                 <div className="relative flex items-center rounded-xl p-8 border-white/10 border hover:-translate-y-1 transition-all">
                     {/* Previous Button */}
                     <button
                         className="absolute left-0 z-10 bg-gray-800 p-2 rounded-full shadow-md hover:bg-gray-700"
-                        onClick={scrollLeft}
+                        onClick={scrollLeftMovie}
                     >
                         ◀
                     </button>
 
                     {/* Scrollable Movie List */}
                     <div
-                        ref={carouselRef}
+                        ref={movieCarouselRef}
                         className="flex overflow-hidden space-x-4 p-2 w-full"
                     >
                         {movies.map((movie) => (
@@ -98,11 +133,62 @@ export const Hobbies = () => {
                     {/* Next Button */}
                     <button
                         className="absolute right-0 z-10 bg-gray-800 p-2 rounded-full shadow-md hover:bg-gray-700"
-                        onClick={scrollRight}
+                        onClick={scrollRightMovie}
                     >
                         ▶
                     </button>
                     </div>
+                  <div className="rounded-xl p-8 border-white/10 border hover:-translate-y-1 transition-all">
+                    <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
+                        Music
+                    </h2>
+                      <p className="text-gray-300 mb-6">
+                      I'm also an avid music fan, I love collecting and discovering new music from all genres. Here are some of my favorite albums of all time:
+                      </p>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 "></div>
+
+                {/*music section*/}
+                <div className="relative flex items-center rounded-xl p-0 border-white/10 border hover:-translate-y-1 transition-all">  
+                  <div className="flex items-center justify-center w-full py-10">
+                    {/* Previous Button */}
+                    <button
+                        className="absolute left-0 z-10 bg-gray-800 p-2 rounded-full shadow-md hover:bg-gray-700"
+                        onClick={scrollLeftAlbum}
+                    >
+                        ◀
+                    </button>
+                    
+                    <div
+                        ref={albumCarouselRef}
+                        className="flex overflow-hidden space-x-4 p-15 w-full"
+                    >
+                      {albums.length > 0 &&
+                        albums.map((album, index) => (
+                          <div
+                            key={index}
+                            className="flex-shrink-0 w-48 h-48 bg-gray-300 rounded-lg shadow-lg relative"
+                          >
+                            <img
+                              src={album.imageUrl}
+                              alt={album.name}
+                              className="w-full h-full object-cover rounded-lg"
+                            />
+                            <p className="text-xs text-center mt-2">{album.name}</p>                       
+                        </div>
+                        
+                        ))}
+                    </div>
+
+                    {/* Next Button */}
+                    <button
+                        className="absolute right-0 z-10 bg-gray-800 p-2 rounded-full shadow-md hover:bg-gray-700"
+                        onClick={scrollRightAlbum}
+                    >
+                        ▶
+                    </button>
+                  </div>
+                  </div>
                 </div>
         </section>
     );
