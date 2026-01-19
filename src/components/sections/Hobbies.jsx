@@ -142,9 +142,8 @@ export const Hobbies = () => {
                       Movies
                   </h2>
                     <p className="text-gray-300 mb-4">
-                    Movies have always been a passion of mine, offering a unique window into different cultures, stories, and emotions. 
-                    Whether it's the thrill of a gripping action scene, the depth of a well-crafted drama, or the artistry of cinematography, I love exploring films from all genres. 
-                    Here are some of my favorite films that have left a lasting impact on me and continue to shape my love for cinema:
+                    Movies have always been a passion of mine. I love to watch different movies from all genres and eras to immerse myself within different stories, cultures, and emotions.
+                    Here are some of my favorites:
                     </p>
             </div>
 
