@@ -10,6 +10,8 @@ export const About = () => {
         "Node.js",
         "Python",
         "AWS",
+        "Azure",
+        "Java",
         "PostgreSQL"
     ];
 
@@ -23,7 +25,7 @@ export const About = () => {
           <div className="rounded-xl p-8 border-white/10 border hover:-translate-y-1 transition-all">
             <p className="text-gray-300 mb-6">
             I'm a master's student in Information and Communication Technology, majoring in Software Development with a minor in Data Analytics. 
-            Passionate about cloud technologies, currently working on AWS certifications. 
+            Passionate about cloud technologies, currently writing my master's thesis and working on Azure and Databricks certifications. 
             Natural problem-solver with strong language skills, enthusiastic about new opportunities related to learning new technologies and challenges.
             </p>
 
@@ -84,7 +86,7 @@ export const About = () => {
                     AWS Cloud Practitioner
                   </h4>
                   <h4 className="font-semibold">
-                    AWS Data Engineer (ongoing)
+                    Azure Foundational (ongoing)
                   </h4>
                   <h4 className="font-semibold">
                     Google Cloud Fundamentals: Core Infrastructure
