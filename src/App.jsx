@@ -7,6 +7,7 @@ import { MobileMenu } from "./components/MobileMenu";
 import { Home } from "./components/sections/Home";
 import { About } from "./components/sections/About";
 import { Hobbies } from "./components/sections/Hobbies";
+import { ErrorBoundary } from "./components/ErrorBoundary";
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -18,9 +19,9 @@ function App() {
       <div className={`min-h-screen transition-opacity duration-700 ${isLoaded ? "opacity-100" : "opacity-0"} bg-black text-gray-100`}>
         <NavigationBar menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
-        <Home/>
-        <About/>
-        <Hobbies/>
+        <ErrorBoundary><Home/></ErrorBoundary>
+        <ErrorBoundary><About/></ErrorBoundary>
+        <ErrorBoundary fallback="Hobbies could not be loaded right now."><Hobbies/></ErrorBoundary>
       </div>
     </>
   );
